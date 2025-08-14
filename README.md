@@ -1,1 +1,2 @@
 # mohamed-719-clinic-management-system
+JavaScript Project
