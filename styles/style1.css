@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  direction: rtl;
+  text-align: right;
+}
