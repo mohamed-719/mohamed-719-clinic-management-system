@@ -1,0 +1,89 @@
+{
+    "doctors": [
+        {
+            "name": "دكتور أحمد أبو الغيط",
+            "imageURL": "/assets/doctorImg/drimag.avif",
+            "speciality": {"GSpeciality": "Dermatology","SubSpeciality": ["Cosmetic Dermatology", "Pediatric Dermatology"]},
+            "summary": "د. أحمد أبو الغيط أخصائي الجلدية و تجميل الجلد. حاصل على ماجستير الأمراض الجلدية من جامعة القاهرة و دكتوراة من جامعة كامبريدج بإنجلترا. متخصص فى علاج أمراض الجلد و الشعر بالإضافة الى علاجات تجميل الجلد مثل البوتوكس و الفيلر و الليزر.",
+            "rating": {
+                "overallRate": 4.8,
+                "numberOfPeopleRating": 120
+            },
+            "clinic": {
+                "location": {
+                    "govern": "Cairo",
+                    "city": "Nasr City",
+                    "street": "El Tayaran St.",
+                    "block": "B12"
+                },
+                "schedule": {
+                    "workingDays": [
+                        "Sunday",
+                        "Monday",
+                        "Wednesday",
+                        "Thursday"
+                    ],
+                    "workingHours": "09:00 - 17:00"
+                },
+                "offers": [
+                    "Free ECG with first visit",
+                    "10% discount on follow-up"
+                ]
+            },
+            "reviews": [
+                {
+                    "reviewer": "Mohamed Ali",
+                    "comment": "Very professional and caring.",
+                    "rating": 5
+                },
+                {
+                    "reviewer": "Sara Mostafa",
+                    "comment": "Explained everything clearly.",
+                    "rating": 4.5
+                }
+            ]
+        },
+        {
+            "name": "Dr. Mona ElSayed",
+            "imageURL": "https://example.com/images/dr-mona-elsayed.jpg",
+            "speciality": "Dermatology",
+            "summary": "Specialist in skin care and cosmetic procedures.",
+            "rating": {
+                "overallRate": 4.6,
+                "numberOfPeopleRating": 85
+            },
+            "clinic": {
+                "location": {
+                    "govern": "Giza",
+                    "city": "Dokki",
+                    "street": "Tahrir St.",
+                    "block": "C5"
+                },
+                "schedule": {
+                    "workingDays": [
+                        "Saturday",
+                        "Tuesday",
+                        "Thursday"
+                    ],
+                    "workingHours": "10:00 - 16:00"
+                },
+                "offers": [
+                    "Free skin consultation",
+                    "15% off laser treatments"
+                ]
+            },
+            "reviews": [
+                {
+                    "reviewer": "Laila Samir",
+                    "comment": "Helped me with my acne problem.",
+                    "rating": 4.7
+                },
+                {
+                    "reviewer": "Omar Khaled",
+                    "comment": "Friendly and knowledgeable.",
+                    "rating": 4.5
+                }
+            ]
+        }
+    ]
+}
