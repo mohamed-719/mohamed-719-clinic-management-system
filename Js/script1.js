@@ -4,8 +4,11 @@
          * after json data is loaded, the title will be set to "دكتور".
          */
 let windowWidth = window.innerWidth;
-let doctorId = new URLSearchParams(window.location.search).get("doctorId");
 
+let doctorId = new URLSearchParams(window.location.search).get("doctorId");
+if (doctorId==null || doctorId=="" || doctorId==undefined) {
+    doctorId = "0";
+}
 function availableWidth() {
     if (windowWidth < 768) {
         //if the window width is less than 768px, then the page is in mobile view
