@@ -1,32 +1,34 @@
 {
     "acount": {
-        "patientAccountCount": 0,
-        "patient": [{
-            "ID": 0,
-            "name": " ",
-            "username": "",
-            "password": "",
-            "email": "",
-            "phone": "",
-            "birthDate": "",
-            "gender": "",
-            "bookings": [
-                {
-                    "bookID": 0,
-                    "doctorID": 0,
-                    "doctorName": "",
-                    "doctorImgURL": "",
-                    "clinicLocation": {
-                        "govern": "",
-                        "city": "",
-                        "street": "",
-                        "block": ""
-                    },
-                    "bookingDate": "",
-                    "bookingTime": "", 
-                    "status": ""
-                }
-            ]
-        }]
+        "patientAccountCount": 1,
+        "patient": [
+            {
+                "ID": 1,
+                "name": " مصطفى عطيه",
+                "username": "mostafa12@gmail.com",
+                "password": "",
+                "email": "mostafa12@gmail.com",
+                "phone": "0123456789",
+                "birthDate": "2000-01-01",
+                "gender": "male",
+                "bookings": [
+                    {
+                        "bookID": 1,
+                        "doctorID": 0,
+                        "doctorName": "دكتور أحمد أبو الغيط",
+                        "doctorImgURL": "/assets/doctorImg/drimag.avif",
+                        "clinicLocation": {
+                            "govern": "Cairo",
+                            "city": "Nasr City",
+                            "street": "El Tayaran St.",
+                            "block": "B12"
+                        },
+                        "bookingDate": "2025-08-20",
+                        "bookingTime": "15:00",
+                        "status": "reserved",
+                    }
+                ]
+            }
+        ]
     }
 }
