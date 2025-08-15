@@ -6,3 +6,15 @@ body {
   direction: rtl;
   text-align: right;
 }
+/* Header and Banner */
+.header, .customBar {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.doctordataBox {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+}
