@@ -17,6 +17,9 @@
                         "doctorID": 0,
                         "doctorName": "دكتور أحمد أبو الغيط",
                         "doctorImgURL": "/assets/doctorImg/drimag.avif",
+                        "doctorRating": 4.8,
+                        "sessionPrice": 100,
+                        "clinicPhone": "01012345678",
                         "clinicLocation": {
                             "govern": "Cairo",
                             "city": "Nasr City",

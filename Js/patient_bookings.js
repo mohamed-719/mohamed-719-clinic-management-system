@@ -78,6 +78,7 @@ function getBooking(data) {
     }
     alert("Data loaded successfully");
     console.log(pBookingData);
+    loadBookings(pBookingData);
 }
 
 
@@ -96,22 +97,19 @@ function cancelBooking(bookingId) {
 }
 
 // عرض الحجوزات
-function loadBookings() {
-    var bookings = pBookingData
+function loadBookings(bookData) {
+     
     var container = document.getElementById("bookings-container");
     container.innerHTML = "";
 
-    if (bookings.length === 0) {
-        container.innerHTML = '<div class="no-bookings" style="text-align:center; padding:20px;"><img src="" style="width:80px;"><p>You have no bookings yet</p></div>';
-        return;
-    }
+    console.log(bookData);
 
-    bookings.forEach(function(b) {
+    bookData.forEach (b => {
         var card = document.createElement("div");
         card.className = "booking-card";
 
         var statusClass = b.status.toLowerCase().replace(" ", "");
-        var stars = "★".repeat(b.rating) + "☆".repeat(5 - b.rating);
+        var stars = "★".repeat(b.doctorRating) + "☆".repeat(5 - b.doctorRating);
 
         var actionButtons = "";
         if (b.status !== "Canceled") {
@@ -119,14 +117,15 @@ function loadBookings() {
         }
 
         card.innerHTML = `
-            <img class="booking-img" src="${b.img}" alt="Booking Image">
+            <img class="booking-img" src="${b.doctorImgURL}" alt="Booking Image">
             <div class="booking-info">
-                <h3>${b.name}</h3>
+                <h3>${b.doctorName}</h3>
                 <div class="rating">${stars}</div>
-                <p class="price">${b.price}</p>
-                <p class="phone">📞 ${b.phone}</p>
-                <p><strong>Date:</strong> ${b.datetime}</p>
-                <p><strong>Branch:</strong> ${b.branch}</p>
+                <p class="price">${b.sessionPrice}</p>
+                <p class="phone">📞 ${b.clinicPhone}</p>
+                <p><strong>Date:</strong> ${b.bookingDate}</p>
+                <p><strong>Time:</strong> ${b.bookingTime}</p>
+                <p><strong>Branch:</strong> ${b.clinicLocation.govern} ${b.clinicLocation.city} ${b.clinicLocation.street} ${b.clinicLocation.block}</p>
                 <span class="status ${statusClass}">${b.status}</span>
                 <div class="actions">
                     ${actionButtons}
@@ -140,4 +139,4 @@ function loadBookings() {
 
 // تشغيل
 //seedData();
-loadBookings();
+
