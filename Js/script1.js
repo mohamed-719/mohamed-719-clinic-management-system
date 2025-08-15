@@ -71,6 +71,8 @@ xmlHttp.onreadystatechange = function () {
 }
 xmlHttp.open("GET", "Js/doctorexamplejason.txt", true);
 xmlHttp.send();
+//this function will implement the data from the json file
+//it will create the doctor card, doctor info, services, schedule and reviews
 function implementData(d) {
     var jsonData = JSON.parse(d);
     console.log(jsonData);
