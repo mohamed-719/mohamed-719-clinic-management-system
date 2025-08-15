@@ -6,7 +6,7 @@
                 "ID": 1,
                 "name": " مصطفى عطيه",
                 "username": "mostafa12@gmail.com",
-                "password": "",
+                "password": "123",
                 "email": "mostafa12@gmail.com",
                 "phone": "0123456789",
                 "birthDate": "2000-01-01",

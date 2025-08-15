@@ -1,4 +1,5 @@
 // Seed Data - بيضيف بيانات تجريبية أول مرة
+/*
 function seedData() {
     var bookings = JSON.parse(localStorage.getItem("bookings")) || [];
 
@@ -41,6 +42,38 @@ function seedData() {
 
         localStorage.setItem("bookings", JSON.stringify(bookings));
     }
+}
+
+*/
+let patientId = 1; // معرف المريض
+var pBookingData;
+
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+        var str = xmlHttp.responseText;
+        getBooking(str);
+    }
+}
+xmlHttp.open("GET", "Js/patientAccJason.txt", true);
+xmlHttp.send();
+
+function getBooking(data) {
+    var jsonData = JSON.parse(data);//
+    // التأكد من وجود بيانات الحجوزات
+    
+    var patients = jsonData.account.patient;
+    patients.forEach(patient => {
+        if (doctor.ID == doctorId) {    
+            pBookingData = patient.bookings;
+        }
+    });
+
+    if (pBookingData.length === 0) {
+        document.getElementById("bookings-container").innerHTML = '<div class="no-bookings" style="text-align:center; padding:20px;"><img src="" style="width:80px;"><p>You have no bookings yet</p></div>';
+        return;
+    }
+    return bookings
 }
 
 

@@ -80,7 +80,6 @@ xmlHttp.send();
 //it will create the doctor card, doctor info, services, schedule and reviews
 function implementData(d) {
     var jsonData = JSON.parse(d);
-    console.log(jsonData);
     var dData;
     var doctors = jsonData.doctors;
     doctors.forEach(doctor => {
