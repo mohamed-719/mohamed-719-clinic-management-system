@@ -13,49 +13,52 @@ function availableWidth() {
         document.querySelector(".doctorSchedule").style.cssText = `width: 100%;`;
     }
 }
-function schedule(DoctorD,offset=new Number()) 
-{
+function schedule(DoctorD, offset = new Number()) {
     //this function checks if the doctor has a schedule
     var nowDate = new Date();
     var currentDay = nowDate.getDay(); // 0-6 (Sunday-Saturday
-    var workingDays=DoctorD.schedule.workingDays
+    var workingDays = DoctorD.schedule.workingDays
+    let holyDay = false;
     //this array contains the working days in Arabic
     var workingDaysTextArray = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
     //this array contains the working days in Arabic
-    var currentDayText = ""; 
-        switch (currentDay) {  
-            case 0:
-                currentDayText= workingDaysTextArray[0];
-                break;
-            case 1:
-                currentDayText= workingDaysTextArray[1];
-                break;
-            case 2:
-                currentDayText= workingDaysTextArray[2];
-                break;
-            case 3:
-                currentDayText= workingDaysTextArray[3];
-                break;
-            case 4:
-                currentDayText= workingDaysTextArray[4];
-                break;
-            case 5:
-                currentDayText= workingDaysTextArray[5];
-                break;
-            case 6:
-                currentDayText= workingDaysTextArray[6];
-                break;
-            default:
-                break; 
+    var currentDayText = "";
+    switch (currentDay) {
+        case 0:
+            currentDayText = workingDaysTextArray[0];
+            break;
+        case 1:
+            currentDayText = workingDaysTextArray[1];
+            break;
+        case 2:
+            currentDayText = workingDaysTextArray[2];
+            break;
+        case 3:
+            currentDayText = workingDaysTextArray[3];
+            break;
+        case 4:
+            currentDayText = workingDaysTextArray[4];
+            break;
+        case 5:
+            currentDayText = workingDaysTextArray[5];
+            break;
+        case 6:
+            currentDayText = workingDaysTextArray[6];
+            break;
+        default:
+            break;
     }
     workingDays.forEach((day) => {
-        if (day !== currentDayText) {}
+        if (day !== currentDayText) {
+            holyDay = true;
+        }
 
     });
-    var StartinHours=DoctorD.schedule.workingHours.StartingHour
-    var ClosingHours=DoctorD.schedule.workingHours.ClosingHours
-    
-    
+    var StartinHours = DoctorD.schedule.workingHours.StartingHour
+    var ClosingHours = DoctorD.schedule.workingHours.ClosingHours
+
+
+
 }
 
 //alert(window.location.href);
@@ -93,6 +96,107 @@ function implementData(d) {
     var doctorREserve = createDoctorReserve(dData);
     doctorDataBox.appendChild(doctorREserve);
 
+    //create reviews and append it to the doctordataBox
+    var reviews = createReviews(dData);
+    doctorDataBox.appendChild(reviews);
+
+}
+
+//create reviews card
+//this card will contain the doctor's reviews
+function createReviews(doctor) {
+    //create reviews card
+    let reviewsCard = document.createElement("div");
+    reviewsCard.className = "reviewsCard";
+    reviewsCard.style.cssText = `display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0px;`;
+    //create reviews card header
+    let cardHeader = document.createElement("h3");
+    cardHeader.className = "reviewsCardHeader";
+    cardHeader.textContent = "تقييمات الزوار";
+    cardHeader.style.cssText = `text-align: right;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+        margin-right: 10px;`;
+    //create reviews content
+    //this will contain the reviews
+    let reviewsContent = document.createElement("div");
+    reviewsContent.className = "reviewsContent";
+    reviewsContent.style.cssText = `display: flex;
+    width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        overflow-y: auto;`;
+    //loop through the doctor's reviews and create a card for each review   
+    var reviews = doctor.reviews;
+    reviews.forEach(review => {
+        //create review card
+        let reviewCard = document.createElement("div");
+        reviewCard.className = "reviewCard";
+        reviewCard.style.cssText = `display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;`;
+        //create review header
+        let reviewHeader = document.createElement("div");
+        reviewHeader.className = "reviewHeader";
+        reviewHeader.style.cssText = `display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;`;
+        //create review author
+        let reviewAuthor = document.createElement("span");
+        reviewAuthor.className = "reviewAuthor";
+        reviewAuthor.textContent = review.author;
+        reviewAuthor.style.cssText = `font-weight: bold;
+            color: #333;`;
+        //create review date
+        let reviewDate = document.createElement("span");
+        reviewDate.className = "reviewDate";
+        reviewDate.textContent = new Date(review.date).toLocaleDateString("ar-EG", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        reviewDate.style.cssText = `color: #999;
+            font-size: 0.9rem;`;
+        //create review rating
+        let reviewRating = document.createElement("span");
+        reviewRating.className = "reviewRating";
+        reviewRating.textContent = `التقييم: ${review.rating} / 5`;
+        reviewRating.style.cssText = `color: #f39c12;
+            font-weight: bold;`;
+        //append review author, date and rating to review header
+        reviewHeader.appendChild(reviewAuthor);
+        reviewHeader.appendChild(reviewDate);
+        reviewHeader.appendChild(reviewRating);
+        //create review content
+        let reviewContent = document.createElement("p");
+        reviewContent.className = "reviewContent";
+        reviewContent.textContent = review.content;
+        reviewContent.style.cssText = `text-align: right;
+            font-size: 14px;
+            color: #555;
+            padding-left: 15px;
+            padding-right: 15px;`;
+        //append review header and content to review card
+        reviewCard.appendChild(reviewHeader);
+        reviewCard.appendChild(reviewContent);
+        //append review card to reviews content
+        reviewsContent.appendChild(reviewCard);
+    });
+    //append reviews content to reviews card
+    reviewsCard.appendChild(cardHeader);
+    reviewsCard.appendChild(reviewsContent);
+    //return reviews card
+    return reviewsCard;
 }
 //create doctor reserve form
 //this form will contain the reservation form
@@ -107,28 +211,35 @@ function createDoctorReserve(doctor) {
         gap: 10px;
         padding: 0px;
        `;
-
     //create reservation form header
     //this header will contain the doctor's name
-    
+
     let header = document.createElement("div");
     header.className = "reservationHeader";
+    header.onclick = function () {
+        //when clicked open new page with the doctor's schedule
+        window.location.href = "DoctorSchedule.html?doctorId=" + doctor.id;
+    }
+    //set header style
     header.style.cssText = `display: block;
         text-align: center;
         background-color:red;
         color: white;
         border-radius: 10px;
         border: 1px solid red;
-        width: 100%;`
+        width: 100%;
+        cursor: pointer;`
 
     //create header content
     //this content will contain the doctor's name
     let headerContent = document.createElement("h3");
     headerContent.className = "reserveHeaderContent";
-    headerContent.textContent = "حجز موعد مع الدكتور "+" "+doctor.name;
+    headerContent.textContent = "حجز موعد مع الدكتور " + " " + doctor.name;
     headerContent.style.cssText = `
         font-size:15px;
     `
+
+    /*
     //create doctor reserve form
     let doctorReserveForm = document.createElement("form");
     doctorReserveForm.className = "doctorReserveForm";
@@ -136,10 +247,38 @@ function createDoctorReserve(doctor) {
         flex-direction: column;
         gap: 10px;
         padding-top: 20px;`;
+    doctorReserveForm.elements=[]
 
+    //create daycards container
+    //this container will contain the day cards
+    let dayCardsContainer = document.createElement("div");
+    dayCardsContainer.className = "dayCardsContainer";
+    dayCardsContainer.style.cssText = `display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+        overflow-x: auto;`;
+    //create day cards nav buttons
+    //these buttons will be used to navigate through the day cards
+    
+    let dayCardsNav = document.createElement("div");
+    dayCardsNav.className = "dayCardsNav";
+
+    // create day card to select the day
+    let dayCard = document.createElement("div");
+    dayCard.className = "dayCard";
+    dayCard.style.cssText = `display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;`;
+*/
     doctorreserveCard.appendChild(header);
     header.appendChild(headerContent);
-    doctorreserveCard.appendChild(doctorReserveForm);
+    //doctorreserveCard.appendChild(doctorReserveForm);
+    //doctorReserveForm.appendChild(dayCardsContainer);
+    // dayCardsContainer.appendChild(dayCard);
     return doctorreserveCard;
 }
 //create services card
@@ -147,7 +286,58 @@ function createDoctorReserve(doctor) {
 function createServices(doctor) {
 
     var servicesCard = document.createElement("div");
-    servicesCard.className = ".services";
+    servicesCard.className = "services";
+    servicesCard.style.cssText = `display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0px;`;
+    //create services card header
+    let cardHeader = document.createElement("h3");
+    cardHeader.className = "servicesCardHeader";
+    cardHeader.textContent = "الخدمات المقدمة";
+    cardHeader.style.cssText = `text-align: right;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+        margin-right: 10px;`;
+    //create services card content
+    //small card for each service
+    let servicesContent = document.createElement("div");
+    servicesContent.className = "servicesContent";
+    servicesContent.style.cssText = `display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+        overflow-x: auto;`;
+    //loop through the doctor's services and create a card for each service
+    var offers = doctor.clinic.offers;
+    offers.forEach(service => {
+        //create service card
+        let serviceCard = document.createElement("div");
+        serviceCard.className = "offerCard";
+        serviceCard.style.cssText = `display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;`;
+        //create service name
+        let serviceName = document.createElement("h4");
+        serviceName.className = "serviceName";
+        serviceName.textContent = service;
+        serviceName.style.cssText = `font-size: 1rem;
+            font-weight: bold;
+            color: #333;`;
+        //append service name to service card
+        serviceCard.appendChild(serviceName);
+        //append service card to services content
+        servicesContent.appendChild(serviceCard);
+    });
+    //append services content to services card
+    servicesCard.appendChild(cardHeader);
+    servicesCard.appendChild(servicesContent);
+
     return servicesCard;
 }
 //summary card will contain the doctor's summary
@@ -177,9 +367,9 @@ function createDoctorInfo(doctor) {
         color: #555;
         padding-left: 15px;
         padding-right: 15px;`
-    
 
-    
+
+
     doctorInfo.appendChild(summaryCard);
     summaryCard.appendChild(cardHeader);
     summaryCard.appendChild(summaryContent);
@@ -205,8 +395,11 @@ function createDoctorCard(doctor) {
         `;
     doctorImage.innerHTML = `<img id="doctorCardImg" 
                             src="${doctor.imageURL}" 
-                            alt="${doctor.name}
-                            "style="width: 100px;height: 100px;border-radius: 50%;background: #e8eef7  center / cover no - repeat;border: none; ">`;
+                            alt="${doctor.name}"
+                            style="width: inherit;
+                            height: inherit;
+                            border-radius: 50%;
+                            background: #e8eef7  center / cover no - repeat;border: none; ">`;
 
 
     var doctorName = document.createElement("span");
@@ -225,11 +418,41 @@ function createDoctorCard(doctor) {
     var doctorSpeciality = document.createElement("div");
     doctorSpeciality.className = "doctorSpeciality";
     doctorSpeciality.style.cssText = `font-size: 1rem;
-        color: #666;
+        color: black;
         margin-bottom: 5px;
         text-align: right;
         margin-right: 5px;`;
-    doctorSpeciality.textContent = doctor.speciality.GSpeciality;
+    doctorSpeciality.textContent = `${doctor.speciality.GSpeciality} `;
+    doctorSpeciality.innerHTML += `<br>`;
+    // create highlighted speciality
+
+    let subSpeciality = Array(doctor.speciality.SubSpeciality);
+    let specialitytext = document.createElement("span");
+    specialitytext.className = "specialityText";
+    specialitytext.textContent = " دكتور متخصص في:";
+    specialitytext.style.cssText = `font-weight: bold;
+        color: #555;
+        margin-right: 5px;`;
+    doctorSpeciality.appendChild(specialitytext);
+    //loop through the sub speciality and create a highlight for each one
+    subSpeciality.forEach((subSpec) => {
+        var specialityHighlight = document.createElement("a");
+        specialityHighlight.className = "specialityHighlight";
+        specialityHighlight.href = "#";
+        specialityHighlight.textContent = subSpec ;
+        specialityHighlight.style.cssText = `background-color: none;
+        color: #333;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 7px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        text-decoration: none;`;
+        doctorSpeciality.appendChild(specialityHighlight);
+    })
+    
+
+    //create doctor rate
 
     var doctorRate = document.createElement("div");
     doctorRate.className = "doctorRate";
@@ -239,7 +462,11 @@ function createDoctorCard(doctor) {
     doctorCard.appendChild(doctorImage);
     var textInfo = document.createElement("div");
     textInfo.className = "textInfo";
-    textInfo.style.cssText = `margin-right: 10px;`;
+    textInfo.style.cssText = `margin-right: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;`;
+
     textInfo.appendChild(doctorName);
     textInfo.appendChild(doctorSpeciality);
     textInfo.appendChild(doctorRate);

@@ -3,7 +3,7 @@
         {
             "name": "دكتور أحمد أبو الغيط",
             "imageURL": "/assets/doctorImg/drimag.avif",
-            "speciality": {"GSpeciality": "Dermatology","SubSpeciality": ["Cosmetic Dermatology", "Pediatric Dermatology"]},
+            "speciality": {"GSpeciality": "أخصائي الجلدية و تجميل الجلد","SubSpeciality": ["تجميل وليزر", " جلدية"]},
             "summary": "د. أحمد أبو الغيط أخصائي الجلدية و تجميل الجلد. حاصل على ماجستير الأمراض الجلدية من جامعة القاهرة و دكتوراة من جامعة كامبريدج بإنجلترا. متخصص فى علاج أمراض الجلد و الشعر بالإضافة الى علاجات تجميل الجلد مثل البوتوكس و الفيلر و الليزر.",
             "rating": {
                 "overallRate": 4.8,
@@ -29,14 +29,17 @@
             },
             "reviews": [
                 {
-                    "reviewer": "Mohamed Ali",
-                    "comment": "Very professional and caring.",
-                    "rating": 5
+                    "auther": "Mohamed Ali",
+                    "content": "دكتور ممتاز و محترم جدا",
+                    "rating": 5,
+                    "date": "2023-10-01"
+
                 },
                 {
-                    "reviewer": "Sara Mostafa",
-                    "comment": "Explained everything clearly.",
-                    "rating": 4.5
+                    "auther": "Sara Mostafa",
+                    "content": "بشوش وشاطر ومطمئن",
+                    "rating": 4.5,
+                    "date": "2023-10-02"
                 }
             ]
         },
