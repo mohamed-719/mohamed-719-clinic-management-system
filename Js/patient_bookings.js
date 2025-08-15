@@ -47,25 +47,28 @@ function seedData() {
 */
 let patientId = 1; // معرف المريض
 var pBookingData;
+var canceledBookingID=0;
 
 var xmlHttp = new XMLHttpRequest();
 xmlHttp.onreadystatechange = function () {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
         var str = xmlHttp.responseText;
-        getBooking(str);
+        handleBooking(str);
          
     }
 }
 xmlHttp.open("GET", "Js/patientAccJason.txt", true);
 xmlHttp.send();
 
-function getBooking(data) {
+function handleBooking(data) {
   
    var jsonData = JSON.parse(data);
 
     var patients = jsonData.account.patient;
 
     patients.forEach(patient => {
+        // البحث عن بيانات الحجز للمريض المحدد
+
         if (patient.ID == patientId) {    
             pBookingData = patient.bookings;
         }
@@ -77,7 +80,16 @@ function getBooking(data) {
             '<img src="" style="width:80px;"><p>You have no bookings yet</p></div>';
     }
     alert("Data loaded successfully");
-    console.log(pBookingData);
+    if(canceledBookingID != 0) {
+        // إلغاء الحجز
+        pBookingData.forEach(b => {
+            if (b.bookID == canceledBookingID) {
+                b.status = "Canceled";
+            }
+        });
+        canceledBookingID = 0; // Reset after cancellation
+    }
+    // Call the function to load bookings
     loadBookings(pBookingData);
 }
 
@@ -85,15 +97,13 @@ function getBooking(data) {
 
 // إلغاء الحجز
 function cancelBooking(bookingId) {
-    var bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    bookings = bookings.map(function(b) {
-        if (b.bookingId === bookingId) {
-            b.status = "Canceled";
-        }
-        return b;
-    });
-    localStorage.setItem("bookings", JSON.stringify(bookings));
-    loadBookings();
+    
+    if (!confirm("Are you sure you want to cancel this booking?")) {
+        cancelBookingID = bookingId;
+    }
+    // change status of booking to "Canceled" with bookingId in jason file
+    
+    
 }
 
 // عرض الحجوزات
@@ -101,8 +111,6 @@ function loadBookings(bookData) {
      
     var container = document.getElementById("bookings-container");
     container.innerHTML = "";
-
-    console.log(bookData);
 
     bookData.forEach (b => {
         var card = document.createElement("div");
@@ -132,7 +140,13 @@ function loadBookings(bookData) {
                 </div>
             </div>
         `;
-
+        var statusSpan = document.querySelector(".status");
+        if(b.status === "canceled") {
+            statusSpan.style.cssText = `
+                background-color: red; /* Green */
+                color: white;
+            `;
+        }
         container.appendChild(card);
     });
 }

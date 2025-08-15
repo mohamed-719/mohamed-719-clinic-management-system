@@ -30,6 +30,25 @@
                         "bookingTime": "15:00",
                         "status": "reserved"
                     }
+                    ,
+                    {
+                        "bookID": 2,
+                        "doctorID": 1,
+                        "doctorName": "دكتور محمد علي",
+                        "doctorImgURL": "/assets/doctorImg/drimag2.avif",
+                        "doctorRating": 4.5,
+                        "sessionPrice": 150,
+                        "clinicPhone": "01098765432",
+                        "clinicLocation": {
+                            "govern": "Giza",
+                            "city": "Dokki",
+                            "street": "El Sudan St.",
+                            "block": "A5"
+                        },
+                        "bookingDate": "2025-08-22",
+                        "bookingTime": "10:00",
+                        "status": "reserved"
+                    }
                 ]
             }
         ]
