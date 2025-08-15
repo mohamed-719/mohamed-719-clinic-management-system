@@ -97,7 +97,7 @@ function cancelBooking(bookingId) {
 
 // عرض الحجوزات
 function loadBookings() {
-    var bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    var bookings = pBookingData
     var container = document.getElementById("bookings-container");
     container.innerHTML = "";
 
