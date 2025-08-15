@@ -53,28 +53,33 @@ xmlHttp.onreadystatechange = function () {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
         var str = xmlHttp.responseText;
         getBooking(str);
+         
     }
 }
 xmlHttp.open("GET", "Js/patientAccJason.txt", true);
 xmlHttp.send();
 
 function getBooking(data) {
-    var jsonData = JSON.parse(data);//
-    // التأكد من وجود بيانات الحجوزات
-    
+  
+   var jsonData = JSON.parse(data);
+
     var patients = jsonData.account.patient;
+
     patients.forEach(patient => {
-        if (doctor.ID == doctorId) {    
+        if (patient.ID == patientId) {    
             pBookingData = patient.bookings;
         }
     });
 
-    if (pBookingData.length === 0) {
-        document.getElementById("bookings-container").innerHTML = '<div class="no-bookings" style="text-align:center; padding:20px;"><img src="" style="width:80px;"><p>You have no bookings yet</p></div>';
-        return;
+    if (!pBookingData || pBookingData.length === 0) {
+        document.getElementById("bookings-container").innerHTML = 
+            '<div class="no-bookings" style="text-align:center; padding:20px;">' +
+            '<img src="" style="width:80px;"><p>You have no bookings yet</p></div>';
     }
-    return bookings
+    alert("Data loaded successfully");
+    console.log(pBookingData);
 }
+
 
 
 // إلغاء الحجز
@@ -134,5 +139,5 @@ function loadBookings() {
 }
 
 // تشغيل
-seedData();
+//seedData();
 loadBookings();
