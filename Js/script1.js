@@ -225,7 +225,7 @@ function createDoctorReserve(doctor) {
     header.className = "reservationHeader";
     header.onclick = function () {
         //when clicked open new page with the doctor's schedule
-        window.location.href = "DoctorSchedule.html?doctorId=" + doctor.id;
+        window.location.href = "DoctorSchedule.html?doctorId=" + doctor.ID;
     }
     //set header style
     header.style.cssText = `display: block;
