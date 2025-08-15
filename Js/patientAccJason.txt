@@ -1,0 +1,32 @@
+{
+    "acount": {
+        "patientAccountCount": 0,
+        "patient": [{
+            "ID": 0,
+            "name": " ",
+            "username": "",
+            "password": "",
+            "email": "",
+            "phone": "",
+            "birthDate": "",
+            "gender": "",
+            "bookings": [
+                {
+                    "bookID": 0,
+                    "doctorID": 0,
+                    "doctorName": "",
+                    "doctorImgURL": "",
+                    "clinicLocation": {
+                        "govern": "",
+                        "city": "",
+                        "street": "",
+                        "block": ""
+                    },
+                    "bookingDate": "",
+                    "bookingTime": "", 
+                    "status": ""
+                }
+            ]
+        }]
+    }
+}

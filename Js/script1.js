@@ -81,7 +81,13 @@ xmlHttp.send();
 function implementData(d) {
     var jsonData = JSON.parse(d);
     console.log(jsonData);
-    var dData = jsonData.doctors[0];
+    var dData;
+    var doctors = jsonData.doctors;
+    doctors.forEach(doctor => {
+        if (doctor.ID == doctorId) {    
+            dData = doctor;
+        }
+    });
     //set page tilte
     document.title = dData.name;
 
