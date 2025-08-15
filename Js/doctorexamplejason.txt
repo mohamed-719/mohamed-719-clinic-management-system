@@ -18,12 +18,9 @@
                 },
                 "schedule": {
                     "workingDays": [
-                        "Sunday",
-                        "Monday",
-                        "Wednesday",
-                        "Thursday"
+                        "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس"
                     ],
-                    "workingHours": "09:00 - 17:00"
+                    "workingHours": {"startingHours":"09:00","closingHours":"17:00"}
                 },
                 "offers": [
                     "Free ECG with first visit",

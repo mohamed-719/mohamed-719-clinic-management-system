@@ -13,12 +13,49 @@ function availableWidth() {
         document.querySelector(".doctorSchedule").style.cssText = `width: 100%;`;
     }
 }
-function schedule(DoctorD)
+function schedule(DoctorD,offset=new Number()) 
 {
     //this function checks if the doctor has a schedule
-
+    var nowDate = new Date();
+    var currentDay = nowDate.getDay(); // 0-6 (Sunday-Saturday
     var workingDays=DoctorD.schedule.workingDays
-    var workingHours=DoctorD.schedule.workingHours
+    //this array contains the working days in Arabic
+    var workingDaysTextArray = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+    //this array contains the working days in Arabic
+    var currentDayText = ""; 
+        switch (currentDay) {  
+            case 0:
+                currentDayText= workingDaysTextArray[0];
+                break;
+            case 1:
+                currentDayText= workingDaysTextArray[1];
+                break;
+            case 2:
+                currentDayText= workingDaysTextArray[2];
+                break;
+            case 3:
+                currentDayText= workingDaysTextArray[3];
+                break;
+            case 4:
+                currentDayText= workingDaysTextArray[4];
+                break;
+            case 5:
+                currentDayText= workingDaysTextArray[5];
+                break;
+            case 6:
+                currentDayText= workingDaysTextArray[6];
+                break;
+            default:
+                break; 
+    }
+    workingDays.forEach((day) => {
+        if (day !== currentDayText) {}
+
+    });
+    var StartinHours=DoctorD.schedule.workingHours.StartingHour
+    var ClosingHours=DoctorD.schedule.workingHours.ClosingHours
+    
+    
 }
 
 //alert(window.location.href);
