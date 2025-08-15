@@ -4,6 +4,22 @@
          * after json data is loaded, the title will be set to "دكتور".
          */
 let windowWidth = window.innerWidth;
+function availableWidth() {
+    if (windowWidth < 768) {
+        //if the window width is less than 768px, then the page is in mobile view
+        document.querySelector(".doctorCard").style.cssText = `width: 100%;`;
+        document.querySelector(".doctorInfo").style.cssText = `width: 100%;`;
+        document.querySelector(".services").style.cssText = `width: 100%;`;
+        document.querySelector(".doctorSchedule").style.cssText = `width: 100%;`;
+    }
+}
+function schedule(DoctorD)
+{
+    //this function checks if the doctor has a schedule
+
+    var workingDays=DoctorD.schedule.workingDays
+    var workingHours=DoctorD.schedule.workingHours
+}
 
 //alert(window.location.href);
 var xmlHttp = new XMLHttpRequest();
@@ -24,6 +40,7 @@ function implementData(d) {
 
     //create doctor card and append it to the doctordataBox
     var doctorDataBox = document.querySelector(".doctordataBox");
+    doctorDataBox.style.cssText = `padding: 0px;`;
     //create doctor card
     var doctorCard = createDoctorCard(dData);
     doctorDataBox.appendChild(doctorCard);
@@ -40,33 +57,63 @@ function implementData(d) {
     doctorDataBox.appendChild(doctorREserve);
 
 }
+//create doctor reserve form
+//this form will contain the reservation form
+
 function createDoctorReserve(doctor) {
-    //create header for doctor reserve form
+    //create reservation form card
+    //this card will contain the reservation form
     let doctorreserveCard = document.createElement("div");
     doctorreserveCard.className = "reservationForm";
-    let header = document.querySelector(".reservationForm");
-    header.innerHTML = `<h2 style ="margin-top: 0px;
-        text-align: right;
+    doctorreserveCard.style.cssText = `display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0px;
+       `;
+
+    //create reservation form header
+    //this header will contain the doctor's name
+    
+    let header = document.createElement("div");
+    header.className = "reservationHeader";
+    header.style.cssText = `display: block;
+        text-align: center;
         background-color:red;
         color: white;
-        border-radius: 8px;
-        font-size: 14px;">حجز موعد مع الدكتور ${doctor.name}</h2>`;
-    header.style.cssText = ``;
+        border-radius: 10px;
+        border: 1px solid red;
+        width: 100%;`
+
+    //create header content
+    //this content will contain the doctor's name
+    let headerContent = document.createElement("h3");
+    headerContent.className = "reserveHeaderContent";
+    headerContent.textContent = "حجز موعد مع الدكتور "+" "+doctor.name;
+    headerContent.style.cssText = `
+        font-size:15px;
+    `
     //create doctor reserve form
     let doctorReserveForm = document.createElement("form");
     doctorReserveForm.className = "doctorReserveForm";
-    let doctorREserve = document.querySelector(".doctorSchedule");
-    var scheduleCard = document.createElement("div");
-    return doctorREserve;
-}
+    doctorReserveForm.style.cssText = `display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 20px;`;
 
+    doctorreserveCard.appendChild(header);
+    header.appendChild(headerContent);
+    doctorreserveCard.appendChild(doctorReserveForm);
+    return doctorreserveCard;
+}
+//create services card
+//this card will contain the doctor's services
 function createServices(doctor) {
 
     var servicesCard = document.createElement("div");
     servicesCard.className = ".services";
     return servicesCard;
 }
-
+//summary card will contain the doctor's summary
 function createDoctorInfo(doctor) {
     //get doctor's summary
     var setSummary = doctor.summary
@@ -102,7 +149,8 @@ function createDoctorInfo(doctor) {
     return doctorInfo;
 }
 
-
+//create doctor card
+//this card will contain the doctor's name, image, speciality, and rate
 function createDoctorCard(doctor) {
     let ratingValue = doctor.rating.overallRate;
     let ratingCount = doctor.rating.numberOfPeopleRating;
@@ -110,8 +158,7 @@ function createDoctorCard(doctor) {
 
     let doctorCard = document.createElement("div");
     doctorCard.className = "doctorCard";
-    doctorCard.style.cssText = `
-        `
+    doctorCard.style.cssText = ``
     var doctorImage = document.createElement("div");
     doctorImage.className = "doctorImage";
     doctorImage.style.cssText = `padding: 0;
@@ -131,12 +178,20 @@ function createDoctorCard(doctor) {
     doctorName.style.cssText = `font-size: 1.2rem;
         font-weight: bold;
         color: #333;
-        margin-bottom: 5px;`;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        text-align: right;
+        margin-right: 5px;`;
 
 
 
     var doctorSpeciality = document.createElement("div");
     doctorSpeciality.className = "doctorSpeciality";
+    doctorSpeciality.style.cssText = `font-size: 1rem;
+        color: #666;
+        margin-bottom: 5px;
+        text-align: right;
+        margin-right: 5px;`;
     doctorSpeciality.textContent = doctor.speciality.GSpeciality;
 
     var doctorRate = document.createElement("div");
@@ -147,6 +202,7 @@ function createDoctorCard(doctor) {
     doctorCard.appendChild(doctorImage);
     var textInfo = document.createElement("div");
     textInfo.className = "textInfo";
+    textInfo.style.cssText = `margin-right: 10px;`;
     textInfo.appendChild(doctorName);
     textInfo.appendChild(doctorSpeciality);
     textInfo.appendChild(doctorRate);

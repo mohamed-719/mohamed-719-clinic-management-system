@@ -55,7 +55,7 @@ body {
 }
 
 /* بطاقة الطبيب الأساسية وفق الهيكل المعطى */
-.doctorCard ,.doctorInfo,.services, .doctorSchedule {
+.doctorCard ,.doctorInfo,.services, .reservationForm {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 16px;
