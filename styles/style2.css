@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'diwani'; /* Name of the font */
+    src: url('../fonts/alsamt diwani.ttf') format('truetype'); /* Path to the .ttf file */
+}
+@font-face {
+    font-family: 'watad'; /* Name of the font */
+    src: url('../fonts/watad.otf') format('truetype'); /* Path to the .ttf file */
+}
+body {
+  margin: 0;
+  font-family:'diwani', 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  direction: rtl;
+  text-align: right;
+  padding: 0;
+}
+
+/* Header and Banner */
+header {
+ 
+  background-color: var(--primary);
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+/* box shadoww  commented for ugly style */
+
+#BER {
+  /* box-shadow: 0 0 10px #14e4ff, 0 0 20px #14e4ff; */
+  font-size: 35px;
+  color: rgb(243, 243, 243);
+  text-shadow: 0 0 10px rgb(2, 79, 13), 0 0 15px rgb(1, 74, 10);
+  ;
+}
+
+.signup-btn {
+  box-shadow: 0 0 10px #14e4ff, 0 0 20px #14e4ff;
+}
+
+.login-btn {
+  box-shadow: 0 0 10px #14e4ff, 0 0 20px #14e4ff; 
+}
+
+
+/* ***Logo_of ---My-Brand--at the--Header_STYLY********* */
+
+.logo {
+  font-family: 'diwani', 'watad';
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.btns {
+  margin-top: 10px;
+  cursor: pointer;
+}
+.logo span {
+  color: #003443;
+}
+
+.logo button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+
+.auth-buttons button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: none;
+  background-color: var(--accent);
+  color: var(--text);
+  text-shadow: 0 0 8px var(--muted), 0 0 15px rgb(230, 47, 47);
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+/* hover ---buttons */
+.auth-buttons button:hover {
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+}
+
+.doctordataBox {
+  max-width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+:root {
+  --card-bg: #fff;
+  --page-bg: #f4f6f8;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #1f6fd7;
+  /* أزرق الروابط */
+  --accent: #17a2b8;
+  /* سماوي خفيف للأزرار */
+  --gold: #f59e0b;
+  /* نجوم */
+  --border: #e5e7eb;
+  --success: #10b981;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  font-family: "Cairo", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto
+}
+
+/* Footer background */
+.footer {
+  background-color: #0066cc;
+  color: white;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Flex container for columns */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Each column */
+.footer-column {
+  flex: 1;
+  min-width: 180px;
+  margin: 10px;
+}
+
+.footer-column p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-column ol {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ol li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+/* Logo */
+.footer-logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+/* App badges */
+.app-badges img {
+  width: 120px;
+  margin: 5px 0;
+}
+
+/* Social icons placeholders */
+.social-icons a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-color: white;
+  /* replace with icon background image if needed */
+  border-radius: 50%;
+}
+
+/* Example specific icons (replace with actual images/icons) */
+.social-icons a.facebook {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png');
+  background-size: cover;
+}
+
+.social-icons a.instagram {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg');
+  background-size: cover;
+}
+
+.social-icons a.twitter {
+  background-image: url('https://www.usa.gov/themes/custom/usagov/images/social-media-icons/X_Twitter_Icon.svg');
+  background-size: cover;
+}
