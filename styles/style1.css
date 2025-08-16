@@ -1,6 +1,10 @@
+@font-face {
+    font-family: 'diwani'; /* Name of the font */
+    src: url('fonts/alsamt diwani.ttf') format('truetype'); /* Path to the .ttf file */
+}
 body {
   margin: 0;
-  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+  font-family:'diwani', 'Cairo', 'Segoe UI', Tahoma, sans-serif;
   background-color: #f5f7fa;
   color: #333;
   direction: rtl;
@@ -11,7 +15,7 @@ body {
 /* Header and Banner */
 header {
  
-  background-color: rgb(36, 228, 154);
+  background-color: var(--primary);
   color: #fff;
   padding: 15px 30px;
   display: flex;
@@ -33,16 +37,14 @@ header {
 }
 
 .login-btn {
-  box-shadow: 0 0 10px #14e4ff, 0 0 20px #14e4ff;
+  box-shadow: 0 0 10px #14e4ff, 0 0 20px #14e4ff; 
 }
 
 
 /* ***Logo_of ---My-Brand--at the--Header_STYLY********* */
 
 .logo {
-  font-family: Whyte, BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: 'diwani', sans-serif;
   font-size: 28px;
   font-weight: bold;
 }
@@ -65,9 +67,9 @@ header {
   margin-left: 10px;
   padding: 8px 16px;
   border: none;
-  background-color: #fafdfc;
-  color: rgb(31, 107, 8);
-  text-shadow: 0 0 8px rgb(230, 48, 48), 0 0 15px rgb(230, 47, 47);
+  background-color: var(--accent);
+  color: var(--text);
+  text-shadow: 0 0 8px var(--muted), 0 0 15px rgb(230, 47, 47);
   border-radius: 4px;
   cursor: pointer;
 
@@ -75,8 +77,8 @@ header {
 
 /* hover ---buttons */
 .auth-buttons button:hover {
-  background-color: #108336;
-  color: #ff1472;
+  background-color: var(--primary);
+  color: white;
   font-weight: bold;
 }
 
