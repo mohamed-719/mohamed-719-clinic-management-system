@@ -133,7 +133,7 @@ body {
 .doctorInfo,
 .services,
 .reservationForm,
-.reviewsCard {
+.reviewsCard{
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 16px;

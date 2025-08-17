@@ -250,8 +250,6 @@ function createDoctorReserve(doctor) {
     headerContent.style.cssText = `
         font-size:15px;
     `
-
-    /*
     //create doctor reserve form
     let doctorReserveForm = document.createElement("form");
     doctorReserveForm.className = "doctorReserveForm";
@@ -285,12 +283,10 @@ function createDoctorReserve(doctor) {
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 10px;`;
-*/
+
     doctorreserveCard.appendChild(header);
     header.appendChild(headerContent);
-    //doctorreserveCard.appendChild(doctorReserveForm);
-    //doctorReserveForm.appendChild(dayCardsContainer);
-    // dayCardsContainer.appendChild(dayCard);
+    
     return doctorreserveCard;
 }
 //create services card

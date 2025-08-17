@@ -11,7 +11,7 @@
     <h2>Create Your Account</h2>
     <button class="facebook-btn" id="facebook">Continue with Facebook</button>
     <div class="divider">OR</div>
-    <form id="signup-form">
+    <form id="signup-form" action="https://localhost:7026/api/Auth/register" method="POST">
       <input type="text" id="fullName" placeholder="Full Name" required />
       <input type="tel" id="phone" placeholder="Phone Number" required />
       <input type="email" id="email" placeholder="Email Address" required />
@@ -23,7 +23,7 @@
       <input type="date" id="dob" required />
       <input type="password" id="password" placeholder="Password" required />
       <input type="password" id="rep-password" placeholder="Repeat Password" required />
-      <button type="submit" class="submit-btn" id="sub">JOIN NOW</button>
+      <button type="submit" class="submit-btn" id="sub" >JOIN NOW</button>
     </form>
     <p class="terms">By signing up, you agree to our <a href="#" id="termsofuse">Terms of Use</a>.</p>
     <p class="back">already have an account? <a id="logiin" href="login.html">Login</a></p>
