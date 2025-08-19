@@ -1,0 +1,293 @@
+/* Reset أساسي */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    direction: rtl;
+}
+
+:root {
+    --card-bg: #fff;
+    --page-bg: #f4f6f8;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #1f6fd7;
+    /* أزرق الروابط */
+    --accent: #17a2b8;
+}
+
+/* ===== Header ===== */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #0077b6;
+    color: #fff;
+    padding: 12px 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Navbar --- */
+.nav-nav {
+    flex: 1;
+
+}
+
+.nav-list {
+    float: right;
+    direction: ltr !important;
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    width: fit-content;
+}
+
+.nav-list li {
+    padding: 15px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-list li:hover {
+    color: #90e0ef;
+}
+
+
+header .logo span {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 100px;
+}
+
+.btns {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.login-btn {
+    background: #fff;
+    color: #0077b6;
+}
+
+.signup-btn {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+.btns:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Profile Container ===== */
+.profileContainer {
+    padding: 30px;
+}
+
+.customBar {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #0077b6, #00b4d8);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.doctordataBox {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    min-height: 150px;
+}
+
+.doctorCard,
+.doctorInfo,
+.services,
+.reservationForm,
+.reviewsCard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+    margin: 20px;
+}
+
+.reviewCard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+    margin: 10px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto
+}
+
+/* بطاقة الطبيب الأساسية وفق الهيكل المعطى */
+.doctorCard,
+.doctorInfo,
+.services,
+.reservationForm,
+.reviewsCard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+    margin: 20px;
+}
+
+/* يسار: صورة الطبيب */
+.doctorImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #e8eef7 url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=400&auto=format&fit=crop') center/cover no-repeat;
+    border: 4px solid #edf2f7;
+}
+
+/* الوسط: الاسم والتخصص والتصنيفات */
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.doctorName {
+    font-size: 28px;
+    font-weight: 800
+}
+
+.doctorSpeciality {
+    font-size: 18px;
+    color: var(--muted)
+}
+
+/* ===== Footer ===== */
+.footer {
+    background: #023e8a;
+    color: #ddd;
+    padding: 40px 20px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+}
+
+.footer-logo {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.footer-column p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-column ol {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #ddd;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-column a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Badges */
+.app-badges img {
+    width: 120px;
+    margin: 5px 0;
+}
+
+/* Social Icons (dummy style) */
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #0096c7;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .auth-buttons {
+        justify-content: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}

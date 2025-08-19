@@ -9,6 +9,7 @@ let doctorId = new URLSearchParams(window.location.search).get("doctorId");
 if (doctorId==null || doctorId=="" || doctorId==undefined) {
     doctorId = "0";
 }
+let patientID=window.localStorage.getItem('patientId');
 function availableWidth() {
     if (windowWidth < 768) {
         //if the window width is less than 768px, then the page is in mobile view
@@ -152,6 +153,7 @@ function createReviews(doctor) {
         reviewCard.className = "reviewCard";
         reviewCard.style.cssText = `display: flex;
             flex-direction: column;
+            background-color:white;
             gap: 5px;
             padding: 10px;
             border: 1px solid #ccc;
@@ -166,7 +168,7 @@ function createReviews(doctor) {
         //create review author
         let reviewAuthor = document.createElement("span");
         reviewAuthor.className = "reviewAuthor";
-        reviewAuthor.textContent = review.author;
+        reviewAuthor.textContent = review.auther;
         reviewAuthor.style.cssText = `font-weight: bold;
             color: #333;`;
         //create review date
@@ -184,6 +186,8 @@ function createReviews(doctor) {
         reviewRating.className = "reviewRating";
         reviewRating.textContent = `التقييم: ${review.rating} / 5`;
         reviewRating.style.cssText = `color: #f39c12;
+            font-weight: bold;
+            margin:5px;
             font-weight: bold;`;
         //append review author, date and rating to review header
         reviewHeader.appendChild(reviewAuthor);
