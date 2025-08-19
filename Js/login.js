@@ -37,6 +37,8 @@
     document.getElementById("login-form").addEventListener("submit", function(eve){
     eve.preventDefault();
     
+    var patientId = 0; // Assuming patientId is 0 for this example
+    localStorage.setItem("patientId", patientId);
     var email = document.getElementById("email").value;
     localStorage.setItem("username", email);
     var password = document.getElementById("password").value;
