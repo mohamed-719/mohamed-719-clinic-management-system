@@ -10,6 +10,7 @@ if (doctorId==null || doctorId=="" || doctorId==undefined) {
     doctorId = "0";
 }
 let patientID=window.localStorage.getItem('patientId');
+
 function availableWidth() {
     if (windowWidth < 768) {
         //if the window width is less than 768px, then the page is in mobile view
