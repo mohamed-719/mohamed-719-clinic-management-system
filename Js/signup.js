@@ -38,7 +38,7 @@
     // Validation
     
     
-
+        //بيعمل فالديت علي الاسم
     function validateName(eve)
     {
         if (name.value.length < 8) 
@@ -55,6 +55,7 @@
             }
     }
 
+    //بيعمل فالديت علي رقم التليفون
     function validatePhone(eve) {
         phonePattern = /^\+20\d{10}$/;
         if (!phonePattern.test(phone.value)) {
@@ -66,8 +67,7 @@
             return true;
         }
     }
-
-
+        // بيعمل فالديت علي الايميل
     function validateEmail(eve) {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email.value)) {
@@ -79,7 +79,7 @@
             return true;
         }
     }
-
+    // بيعمل فالديت ع الجندر
     function validateGender(eve) {
         if (gender.value === "") {
             gendererror.style.display = 'block';
@@ -91,6 +91,8 @@
         }
     }
 
+
+        //بيعمل فالديت علي التاريخ
     function validateDob(eve) {
         const today = new Date();
         const dobDate = new Date(dob.value);
@@ -106,7 +108,7 @@
         }
     }
 
-    
+        //بيعمل فالديت ع الباسورد
     function validatePassword(eve) {
         const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         if (!passwordPattern.test(password.value)) {
@@ -118,6 +120,7 @@
             return true;
         }
     }
+            //بيعمل فالديت ع ريبيت الباسورد
 
     function validateRepPassword(eve) {
         if (repPassword.value !== password.value) {
@@ -130,40 +133,106 @@
         }
     }
 
-    function validatAll(eve){
-        if (validateName (eve) &&  validatePhone(eve) && validateEmail(eve) && validateGender(eve)  && validateDob(eve) &&
-        validateDob(eve) && validatePassword(eve) && validateRepPassword(eve))
-        {
-                alert("Form submitted successfully!");
-                return true;
-        }
-        else
-        {
-            eve.preventDefault();
-            return false;
-        }
-       
-    }
-    document.getElementById("signup-form").addEventListener("submit", async function(eve) {
-        eve.preventDefault();
-        const data = {
-            username: document.getElementById("fullName").value,
-            email: document.getElementById("email").value,
-            password: document.getElementById("password").value,
-            phone: document.getElementById("phone").value,
-            birthdate: document.getElementById("dob").value,
-            gender: document.getElementById("gender").value
-        };
-        const response = await fetch("https://localhost:7026/api/Auth/register", {
+    //بيعمل فالديت عليهم كلهم عشان ميبعتش الفورم الا لما اليوزر يظبط كل الحقول
+    function validatAll(e) {
+    e.preventDefault();
+
+  if (
+    validateName(e) &&
+    validatePhone(e) &&
+    validateEmail(e) &&
+    validateGender(e) &&
+    validateDob(e) &&
+    validatePassword(e) &&
+    validateRepPassword(e)
+  ) {
+    const user = {
+      name: document.getElementById("fullName").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      gender: document.getElementById("gender").value,
+      birthdate: document.getElementById("dob").value,
+      password: document.getElementById("password").value,
+      repeatPassword: document.getElementById("rep-password").value
+    };
+
+
+
+        //بيعمل تشيك لو الايميل والرقم موجودين او لا 
+
+        fetch("http://localhost:3000/users")
+        .then(res => res.json())
+        .then(users => {
+        let exists = users.find(
+          u => u.email === user.email || u.phone === user.phone
+        );
+
+        if (exists) {
+          alert("Email already Exists, Please Log In");
+        } else {
+          fetch("http://localhost:3000/users", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-        });
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+          })
+            .then(res => res.json())
+            .then(data => {
+              alert(" User registered successfully!");
+              document.getElementById("signup-form").reset();
+              console.log("Saved:", data);
+            })
+            .catch(err => {
+              console.error("Error saving user:", err);
+              alert("Something went wrong.");
+            });
+        }
+      })
+      .catch(err => {
+        console.error("Error fetching users:", err);
+        alert("Server error.");
+      });
+  } else {
+    alert("Please fix errors before submitting.");
+  }
+}
 
-        const result = await response.json();
-        alert(result.Message || "Registration failed!");
-    });
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+    /*fetch('http://localhost:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        alert("User registered successfully!");
+        document.getElementById("signup-form").reset();
+        console.log("Saved:", data);
+      })
+      .catch(err => {
+        console.error("Error saving user:", err);
+        alert("Something went wrong.");
+      });
+  } else {
+    alert("Please fix errors before submitting.");
+
+ }
+}
+
+*/

@@ -34,15 +34,31 @@
         window.open("https://www.facebook.com" , "_blank");
     };
 
-    document.getElementById("login-form").addEventListener("submit", function(eve){
+    document.getElementById("login-form").addEventListener("submit", async function(eve){
     eve.preventDefault();
     
-    var patientId = 0; // Assuming patientId is 0 for this example
-    localStorage.setItem("patientId", patientId);
-    var email = document.getElementById("email").value;
-    localStorage.setItem("username", email);
-    var password = document.getElementById("password").value;
-    localStorage.setItem("email", password);
-    alert("Welcome");
+    let email = document.getElementById("email").value.trim();
+    //localStorage.setItem("email", email);
+    let password = document.getElementById("password").value.trim();
+    //localStorage.setItem("password", password);
 
+    try {
+        let res = await fetch("http://localhost:3000/users");
+        let users = await res.json();
+
+        let user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            localStorage.setItem("patient-id" , user.id);
+            localStorage.setItem("email", user.email);
+            localStorage.setItem("username", user.name);
+            alert("Welcome " + user.name);
+            window.location.href = "html1.html";
+        } else {
+            alert("Wrong Email or Password");
+        }
+    } catch (err) {
+        console.error("Error:", err);
+        alert("error");
+    }
 });
