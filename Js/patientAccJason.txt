@@ -4,7 +4,7 @@
         "patient": [
             {
                 "ID": 1,
-                "name": " مصطفى عطيه"   ,
+                "name": " مصطفى عطيه",
                 "password": "123",
                 "email": "mostafa12@gmail.com",
                 "phone": "0123456789",
@@ -14,11 +14,21 @@
                     {
                         "bookID": 1,
                         "doctorID": 0,
+                        "doctorName": "دكتور محمد علي",
+                        "doctorImgURL": "/assets/doctorImg/drimag2.avif",
+                        "doctorRating": 4.5,
+                        "sessionPrice": 150,
+                        "clinicPhone": "01098765432",
+                        "clinicLocation": {
+                            "govern": "Giza",
+                            "city": "Dokki",
+                            "street": "El Sudan St.",
+                            "block": "A5"
+                        },
                         "bookingDate": "2025-08-20",
                         "bookingTime": "15:00",
                         "status": "reserved"
-                    }
-                    ,
+                    },
                     {
                         "bookID": 2,
                         "doctorID": 1,

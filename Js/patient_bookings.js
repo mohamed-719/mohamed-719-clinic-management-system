@@ -45,10 +45,81 @@ function seedData() {
 }
 
 */
+
 let patientId = 1; // معرف المريض
 var pBookingData;
-var canceledBookingID=0;
+var canceledBookingID = 0;
 
+jsonUrl = "Js/patientAccJason.txt";
+
+fetch(jsonUrl)
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        var patients = data.account.patient;
+        patients.forEach(patient => {
+            // البحث عن بيانات الحجز للمريض المحدد
+
+            if (patient.ID == patientId) {
+                pBookingData = patient.bookings;
+            }
+            
+        });
+        if (!pBookingData || pBookingData.length === 0) {
+                return 0;
+            }
+        return pBookingData;
+
+    })
+    .then(bookData=>{
+        var container = document.getElementById("bookings-container");
+    container.innerHTML = "";
+
+    bookData.forEach (b => {
+        var card = document.createElement("div");
+        card.className = "booking-card";
+
+        var statusClass = b.status.toLowerCase().replace(" ", "");
+        var stars = "★".repeat(b.doctorRating) + "☆".repeat(5 - b.doctorRating);
+
+        var actionButtons = "";
+        if (b.status !== "Canceled") {
+            actionButtons = `<button class="cancel-btn" onclick='cancelBooking("${b.bookingId}")'>Cancel</button>`;
+        }
+        console.log(b.doctorName)
+        card.innerHTML = `
+            <img class="booking-img" src="${b.doctorImgURL}" alt="Booking Image">
+            <div class="booking-info">
+                <h3>${b.doctorName}</h3>
+                <div class="rating">${stars}</div>
+                <p class="price">${b.sessionPrice}</p>
+                <p class="phone">📞 ${b.clinicPhone}</p>
+                <p><strong>Date:</strong> ${b.bookingDate}</p>
+                <p><strong>Time:</strong> ${b.bookingTime}</p>
+                <p><strong>Branch:</strong> ${b.clinicLocation.govern} ${b.clinicLocation.city} ${b.clinicLocation.street} ${b.clinicLocation.block}</p>
+                <span class="status ${statusClass}">${b.status}</span>
+                <div class="actions">
+                    ${actionButtons}
+                </div>
+            </div>
+        `;
+        var statusSpan = document.querySelector(".status");
+        if(b.status === "canceled") {
+            statusSpan.style.cssText = `
+                background-color: red; /
+                color: white;
+            `;
+        }
+        container.appendChild(card);
+    });
+
+    })
+
+
+
+
+/*
 var xmlHttp = new XMLHttpRequest();
 xmlHttp.onreadystatechange = function () {
     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
@@ -79,7 +150,6 @@ function handleBooking(data) {
             '<div class="no-bookings" style="text-align:center; padding:20px;">' +
             '<img src="" style="width:80px;"><p>You have no bookings yet</p></div>';
     }
-    alert("Data loaded successfully");
     if(canceledBookingID != 0) {
         // إلغاء الحجز
         pBookingData.forEach(b => {
@@ -123,7 +193,7 @@ function loadBookings(bookData) {
         if (b.status !== "Canceled") {
             actionButtons = `<button class="cancel-btn" onclick='cancelBooking("${b.bookingId}")'>Cancel</button>`;
         }
-
+        console.log(b.doctorName)
         card.innerHTML = `
             <img class="booking-img" src="${b.doctorImgURL}" alt="Booking Image">
             <div class="booking-info">
@@ -143,7 +213,7 @@ function loadBookings(bookData) {
         var statusSpan = document.querySelector(".status");
         if(b.status === "canceled") {
             statusSpan.style.cssText = `
-                background-color: red; /* Green */
+                background-color: red; /
                 color: white;
             `;
         }
@@ -154,3 +224,4 @@ function loadBookings(bookData) {
 // تشغيل
 //seedData();
 
+*/
