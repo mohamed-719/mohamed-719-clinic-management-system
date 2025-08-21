@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al7keem</title>
+    <link rel="stylesheet" href="styles/newStyle.css">
+</head>
+<body>
+    <header>
+        <div class="nav-nav">
+          <ol class="nav-list">
+            <li>Home</li>
+            <li>Search</li>
+            <li>contact Us</li>
+          </ol>
+        </div>
+        <div class="logo"><span id="BER">الحكيم</span></div>
+        <div id="userContainer">
+        <div class="auth-buttons" id="auth-buttons" >
+            <button class="login-btn btns" onclick="loginclick()">Login</button>
+            <button id="signup-btn" class="signup-btn btns" onclick="signclick()">Sign Up</button>
+            
+        </div>
+            <div id="userWelcome" style="display:none;font-weight : bold;">
+                <p></p>
+                <button class="logout-btn btns" onclick="logOutClick()">LogOut</button>
+            </div>
+        </div>
+    </header>
+
+    <footer class="footer">
+    <div class="footer-container">
+      <!-- Column 1 -->
+      <div class="footer-column ">
+        <span id="BER">الحكيم</span>
+        <ol>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+        </ol>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="footer-column colDiff">
+        <p>Search By</p>
+        <ol>
+          <li><a href="#">Speciality</a></li>
+          <li><a href="#">Area</a></li>
+        </ol>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="footer-column colDiff">
+        <p>Are You A Doctor?</p>
+        <ol>
+          <li><a href="#">Join Alhakeem Doctors</a></li>
+        </ol>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="footer-column colDiff">
+        <p>Need Help?</p>
+        <ol>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          
+        </ol>
+      </div>
+
+      <!-- Column 5 -->
+      <div class="footer-column colDiff">
+        <div class="app-badges">
+          <a href="#"><img
+              src="https://cdn-react.vezeeta.com/vezeeta-web-reactjs/jenkins-30/images/google-play-badge.png"
+              alt="Google Play"></a>
+          <a href="#"><img src="https://cdn-react.vezeeta.com/vezeeta-web-reactjs/jenkins-30/images/app-store-badge.png"
+              alt="App Store"></a>
+            
+        </div>
+        <div class="social-icons">
+          <a href="#" class="facebook"></a>
+          <a href="#" class="instagram"></a>
+          <a href="#" class="twitter"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+      function signclick(){
+        window.location.href="signup.html";
+      }
+      function loginclick(){
+        window.location.href="login.html";
+      }
+      function logOutClick(){
+
+      }
+      let userName = window.localStorage.getItem("username")
+      let userSigned = document.getElementById("userWelcome")
+      let userbtns= document.getElementById("auth-buttons")
+      if(!localStorage.getItem('patient-id'))
+      {
+        
+        userbtns.style.cssText=`
+            display:none
+        `
+        userSigned.innerText = userName;
+        userSigned.style.cssText=`
+            display:blocks;
+        `
+        
+      }
+      else{
+        userbtns.style.cssText=`
+            display:none
+        `
+        userSigned.style.cssText=`
+            
+        `
+      }
+    </script>
+</body>
+</html>
