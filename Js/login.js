@@ -43,7 +43,8 @@
     //localStorage.setItem("password", password);
 
     try {
-        let res = await fetch("http://localhost:3000/users");
+        //let res = await fetch("http://localhost:3000/users");
+        let res = await fetch("./db.json");
         let users = await res.json();
 
         let user = users.find(u => u.email === email && u.password === password);

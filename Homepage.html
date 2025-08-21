@@ -22,7 +22,7 @@
             <button id="signup-btn" class="signup-btn btns" onclick="signclick()">Sign Up</button>
             
         </div>
-            <div id="userWelcome" style="display:none;font-weight : bold;">
+            <div id="userWelcome" style="font-weight : bold;">
                 <p></p>
                 <button class="logout-btn btns" onclick="logOutClick()">LogOut</button>
             </div>
@@ -92,30 +92,41 @@
       function loginclick(){
         window.location.href="login.html";
       }
+      
       function logOutClick(){
-
+        let logoutpromise = new Promise(res=>{
+        localStorage.removeItem("username");
+        localStorage.removeItem("patient-id");
+        localStorage.removeItem("email");
+        res("login.html")
+      }).then(value=>{
+        location.href = value;
+      })
+        
+        
       }
       let userName = window.localStorage.getItem("username")
       let userSigned = document.getElementById("userWelcome")
       let userbtns= document.getElementById("auth-buttons")
-      if(!localStorage.getItem('patient-id'))
+      if(localStorage.key("patient-id")!== null)
       {
-        
+        console.log()
         userbtns.style.cssText=`
             display:none
         `
-        userSigned.innerText = userName;
+        let nameText = userSigned.nextSibling 
+        nameText.inn= `<p>${userName}</p>`;
         userSigned.style.cssText=`
-            display:blocks;
+            display:flex;
         `
-        
       }
       else{
+        
         userbtns.style.cssText=`
-            display:none
+           display:flex;
         `
         userSigned.style.cssText=`
-            
+            display:none;
         `
       }
     </script>
